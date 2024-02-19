@@ -1,0 +1,75 @@
+
+/**
+ * Program Purpose : To create a driver class
+ * Name : Muhammad Faiz Haikal Bin Mhd Khisham
+ * Date : 19th February 2024
+ */
+
+import javax.swing.JOptionPane;
+
+
+public class FlowerShop
+{
+    public static void main (String[]args)
+    {
+        String flowerName, color;
+        double price;
+        int quantity;
+        
+        Flower [] inventory = new Flower[10];
+        
+        for (int i = 0; i < inventory.length; i++) {
+            flowerName = JOptionPane.showInputDialog("Enter the flower name " + (i + 1) + ":");
+            color = JOptionPane.showInputDialog("Enter the color of the flower : ");
+            price = Double.parseDouble(JOptionPane.showInputDialog("Enter the price : "));
+            quantity = Integer.parseInt(JOptionPane.showInputDialog("Enter the quantity : "));
+            
+            inventory[i] = new Flower(flowerName, color, price, quantity);
+        }
+        
+        StringBuilder inventoryDetails = new StringBuilder("Flower Inventory : \n");
+        for(Flower flower : inventory) 
+        {
+            inventoryDetails.append(flower).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, inventoryDetails.toString());
+        
+        double totalValue = 0;
+        for(Flower flower : inventory) 
+        {
+            totalValue += flower.getPrice() * flower.getQuantity();
+        }
+        JOptionPane.showMessageDialog(null, "Total Value of Inventory : " + totalValue);
+        
+        String searchName = JOptionPane.showInputDialog("Enter the name of the flower to search : ");
+        boolean found = false;
+        StringBuilder searchResult = new StringBuilder();
+        for (Flower flower : inventory) 
+        {
+            if (flower.getflowerName().equalsIgnoreCase(searchName)) 
+            {
+                searchResult.append("Flower found : \n").append(flower).append("\n");
+                found = true;
+                break;
+            }
+        }
+        if (!found) 
+        {
+            searchResult.append("Flower not found.");
+        }
+        JOptionPane.showMessageDialog(null, searchResult.toString());
+        
+        String restockName = JOptionPane.showInputDialog("Enter the name of the flower to restock : ");
+        int restockQuantity = Integer.parseInt(JOptionPane.showInputDialog("Enter the quantity to restock : "));
+        for (Flower flower : inventory) 
+        {
+            if (flower.getflowerName().equalsIgnoreCase(restockName))
+            {
+                flower.setQuantity(flower.getQuantity() + restockQuantity);
+                JOptionPane.showMessageDialog(null, "Restock Successful. \n Updated details for " + restockName
+                + ":\n" + flower);
+                break;
+            }
+        }
+    }
+}
