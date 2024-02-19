@@ -1,0 +1,87 @@
+
+/**
+ * Program Purpose : Write the complete definition for the flower class
+ * Name : Muhammad Faiz Haikal Bin Mhd Khisham
+ * Date : 19th February 2024
+ */
+public class Flower
+{
+    //Declaration of the instance variables (attributes)
+    private String flowerName;
+    private String color;
+    private double price;
+    private int quantity;
+    
+    //Declaration of the instance methods (behaviours)
+    //Constructor without parameter
+    public Flower()
+    {
+        flowerName = null;
+        color = null;
+        price = 0.0;
+        quantity = 0;
+    } //End of constructor
+    
+    //Constructor with parameter
+    public Flower(String name, String color, double price, int quantity)
+    {
+        flowerName = name;
+        this.color = color;
+        this.price = price;
+        this.quantity = quantity;
+    } //End of constructor
+    
+    public void setFlower(double price, String name, String color, int quantity)
+    {
+        this.price = price;
+        this.flowerName = flowerName;
+        color = color;
+        this.quantity = quantity;
+    } //End of setFlower
+    
+    public void setPrice (double price)
+    {
+        this.price = price;
+    }
+    
+    public void setflowerName (String name)
+    {
+        flowerName = name;
+    }
+    
+    public void setColor (String color)
+    {
+        color = color;
+    }
+    
+    public void setQuantity (int quantity)
+    {
+        this.quantity = quantity;
+    }
+    
+    public double getPrice ()
+    {
+        return this.price;
+    }
+    
+    public String getflowerName ()
+    {
+        return flowerName;
+    }
+    
+    public String getColor ()
+    {
+        return color;
+    }
+    
+    public int getQuantity ()
+    {
+        return this.quantity;
+    }
+    
+    public String toString ()
+    {
+        return ("\nFlower Name = " + getflowerName() + "\nFlower Color = " + getColor() + "\nPrice = " + getPrice()
+        + "\nQuantity = " + getQuantity());
+    }
+}
